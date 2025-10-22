@@ -15,7 +15,7 @@
             <i class="fa-solid fa-pen-to-square fa-lg"></i> Actualizar Registro de Producto
           </div>
           <div class="card-body">
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">  <!-- AQUÍ EL CAMBIO -->
               {% csrf_token %}
               {{ form.as_p }}
               <button type="submit" class="btn btn-primary">Actualizar</button>

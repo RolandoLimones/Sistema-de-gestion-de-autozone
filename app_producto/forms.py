@@ -1,7 +1,6 @@
 from django import forms
 from .models import Producto
 
-
 class ProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
@@ -18,7 +17,7 @@ class ProductoForm(forms.ModelForm):
             'nombre_producto': forms.TextInput(attrs={'class': 'form-control'}),
             'cantidad': forms.NumberInput(attrs={'class': 'form-control'}),
             'proveedor_id': forms.NumberInput(attrs={'class': 'form-control'}),
-            'precio': forms.NumberInput(attrs={'class': 'form-control'}),
+            'precio': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
             'almacen_id': forms.NumberInput(attrs={'class': 'form-control'}),
-            'foto': forms.URLInput(attrs={'class': 'form-control'}),
+            'foto': forms.ClearableFileInput(attrs={'class': 'form-control'}),
         }

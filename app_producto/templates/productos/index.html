@@ -33,11 +33,11 @@
                     <td>{{ producto.precio }}</td>
                     <td>{{ producto.almacen_id }}</td>
                     <td>
-                      {% if producto.foto %}
-                        <img src="{{ producto.foto }}" alt="{{ producto.nombre_producto }}" style="max-width: 80px; max-height: 80px; object-fit: cover;">
-                      {% else %}
-                        Sin imagen
-                      {% endif %}
+{% if producto.foto %}
+    <img src="{{ producto.foto.url }}" alt="{{ producto.nombre_producto }}" style="max-width: 80px; max-height: 80px; object-fit: cover;">
+{% else %}
+    Sin imagen
+{% endif %}
                     </td>
                     <td>
                       <button type="button" class="btn btn-success me-1" href="{% url 'view_producto' producto.id %}" data-bs-toggle="modal" data-bs-target="#myModal{{producto.id}}">
@@ -64,12 +64,11 @@
                                 <li>Precio: <strong>{{ producto.precio }}</strong></li>
                                 <li>Almacen ID: <strong>{{ producto.almacen_id }}</strong></li>
                                 <li>Foto: 
-                                  {% if producto.foto %}
-                                    <br>
-                                    <img src="{{ producto.foto }}" alt="{{ producto.nombre_producto }}" style="max-width: 200px; max-height: 200px; object-fit: cover;">
-                                  {% else %}
-                                    <strong>Sin imagen</strong>
-                                  {% endif %}
+{% if producto.foto %}
+    <img src="{{ producto.foto.url }}" alt="{{ producto.nombre_producto }}" style="max-width: 80px; max-height: 80px; object-fit: cover;">
+{% else %}
+    <div style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; background: #f8f9fa; border: 1px dashed #dee2e6;">📦</div>
+{% endif %}
                                 </li>
                               </ul>
                             </div>

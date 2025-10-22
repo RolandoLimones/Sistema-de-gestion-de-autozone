@@ -19,7 +19,7 @@ def view_producto(request, id):
 
 def add(request):
   if request.method == 'POST':
-    form = ProductoForm(request.POST)
+    form = ProductoForm(request.POST, request.FILES)
     if form.is_valid():
       new_nombre_producto = form.cleaned_data['nombre_producto']
       new_cantidad = form.cleaned_data['cantidad']
@@ -51,7 +51,7 @@ def add(request):
 def edit(request, id):
   if request.method == 'POST':
     producto = Producto.objects.get(pk=id)
-    form = ProductoForm(request.POST, instance=producto)
+    form = ProductoForm(request.POST, request.FILES, instance=producto)
     if form.is_valid():
       form.save()
       return render(request, 'productos/edit.html', {
